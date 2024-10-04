@@ -1,0 +1,28 @@
+{
+  "name": "reactwithnamaste",
+  "version": "1.0.0",
+  "description": "this is react starting from basic to advanced level.",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/guptaamit05/namaste-react)"
+  },
+  "keywords": [
+    "ReactJS",
+    "HTML",
+    "CSS",
+    "JSX"
+  ],
+  "author": "Amit Gupta",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}
