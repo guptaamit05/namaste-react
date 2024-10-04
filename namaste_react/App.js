@@ -19,7 +19,6 @@ const parentDiv = React.createElement(
             "I'm h2 tag"
         )
     )]
-
 );
 
 const root = ReactDOM.createRoot(document.querySelector('.root'))
