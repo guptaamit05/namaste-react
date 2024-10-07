@@ -1,54 +1,57 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
 import restList from "../utils/data";
+import ShimmerFakeUI from "./ShimmerFakeUI";
 
 const Body = () => {
-  const [filterRest, setFilterRest] = useState(restList);
+  const [filterRest, setFilterRest] = useState([]);
+  const [filteredArray, setfilteredArray] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
+  const searchRest = () => {
+    const result = filterRest.filter((restarent) =>
+      restarent.info.name
+        .toLowerCase()
+        .includes(searchInput.trim().toLowerCase())
+    );
+    setfilteredArray(result);
+  };
+
   useEffect(() => {
-    let filteredArray = [];
-    if (searchInput.trim() !== "") {
-      filteredArray = filterRest.filter((restarent) =>
-        restarent.info.name.toLowerCase().includes(searchInput.toLowerCase())
-      );
-      setFilterRest(filteredArray);
-    } else {
+    let timeoutId = setTimeout(() => {
       setFilterRest(restList);
-    }
-  }, [searchInput]);
+      setfilteredArray(restList);
+      return () => clearTimeout(timeoutId);
+    }, 1000);
+  }, []);
 
   return (
     <div className="body-seciton">
       <div className="search-section">
-        <input type="text" className="search-input" />
-        <button
-          className="search-btn"
-          onClick={() =>
-            setSearchInput(document.querySelector(".search-input").value)
-          }
-        >
+        <input
+          type="text"
+          className="search-input"
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+        <button className="search-btn" onClick={() => searchRest()}>
           Search
-        </button>
-
-        <button
-          className="top-rated-btn"
-          onClick={() => {
-            setSearchInput("");
-            document.querySelector(".search-input").value = "";
-          }}
-        >
-          Reset Filter
         </button>
       </div>
       <div className="res-section">
-        {(filterRest.length > 0 &&
-          filterRest.map((rest) => {
+        {(filteredArray.length > 0 &&
+          filteredArray.map((rest) => {
             return <Card key={rest.info.id} oneRest={rest.info} />;
           })) || (
-          <h2>
-            😔 No Restaurent Found! Please cleared the search and try again.
-          </h2>
+          <>
+            <ShimmerFakeUI />
+            <ShimmerFakeUI />
+            <ShimmerFakeUI />
+            <ShimmerFakeUI />
+            <ShimmerFakeUI />
+            <ShimmerFakeUI />
+            <ShimmerFakeUI />
+            <ShimmerFakeUI />
+          </>
         )}
       </div>
     </div>
