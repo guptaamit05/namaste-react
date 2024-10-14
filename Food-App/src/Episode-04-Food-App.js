@@ -1,8 +1,9 @@
-import react from "react";
+import { lazy, Suspense } from "react";
 import reactDom from "react-dom/client";
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Body from './components/Body';
+import { Footer, Header, Body, Error, RestaurantMenu } from "./index";
+import About from "./components/About";
+
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 /**
  * header
@@ -17,16 +18,49 @@ import Body from './components/Body';
     links
 */
 
+// Lazy Loading.....
+const Contact = lazy(() => import("./components/Contact"));
+
 const AppLayout = () => {
   return (
-    <div className="app">
+    <div className="absolute app h-screen w-full">
       <Header />
-      <Body />
+      <Outlet />
       <Footer />
     </div>
   );
 };
 
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: (
+          <Suspense fallback={<h1>Loading.....</h1>}>   
+            <Contact />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/restaurant/:restId",
+        element: <RestaurantMenu />,
+      },
+    ],
+    errorElement: <Error />,
+  },
+]);
+
 const root = reactDom.createRoot(document.querySelector(".root"));
 
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
