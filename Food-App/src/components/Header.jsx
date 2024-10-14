@@ -4,7 +4,7 @@ import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
   return (
-    <div className="flex sm:flex-row flex-col justify-between items-center md:size-auto">
+    <div className="bg-gray-300 shadow-lg flex sm:flex-row flex-col justify-between items-center md:size-auto">
       <div className="logo-section w-20 sm:w-20">
         <Link to="/">
           <img className="mix-blend-multiply size-full sm:size-full" src={logo} alt="food restaurant img" />

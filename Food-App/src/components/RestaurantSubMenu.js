@@ -8,14 +8,17 @@ const RestaurantSubMenu = (prop) => {
       let { name, id, imageId, price, description } = submenu.card.info;
       return (
         <div key={id}>
-          <div className="mt-2 mb-2 flex justify-between items-center">
+          <div className="p-3 mt-2 mb-2 flex justify-between items-center">
             <div className="p-1 w-[80%]">
               <h5>{name}</h5>
               <span>Rs.{price / 100}</span>
               <p>{description}</p>
             </div>
             <div className="text-end">
-              {imageId && <img className="w-[100px] h-50 object-cover" src={SUBMENU_URL + imageId} alt="item cat" />}
+                <div className="absolute">
+                    <button className="p-1 bg-black text-white shadow-lg">Add+</button>
+                </div>
+              {imageId && <img className="w-[150px] h-50 object-cover" src={SUBMENU_URL + imageId} alt="item cat" />}
             </div>
           </div>
           <hr className="border-1 border-solid border-gray-400" />

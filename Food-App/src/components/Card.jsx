@@ -1,10 +1,14 @@
-import { CDN_LINK } from "../index.js"
+import { CDN_LINK } from "../index.js";
 const Card = (prop) => {
   let { oneRest } = prop;
   return (
     <>
-      <div className="border-1 h-[350px] shadow-xl w-[250px] mb-2 object-cover clear-both res-card-section">
-        <img className="w-full h-48 object-cover" src={CDN_LINK + oneRest.cloudinaryImageId} alt="Apna Restaurant" />
+      <div className="border-1 h-[350px] hover:shadow-2xl hover:shadow-gray-700 shadow-xl w-[250px] mb-2 object-cover clear-both res-card-section">
+        <img
+          className="w-full h-48 object-cover"
+          src={CDN_LINK + oneRest.cloudinaryImageId}
+          alt="Apna Restaurant"
+        />
         <div className="p-2">
           <h3>{oneRest.name}</h3>
           <h4>
@@ -20,4 +24,14 @@ const Card = (prop) => {
   );
 };
 
-export {Card};
+const isOpenCloseRestaurant = (Card) => {
+  return (props) => {
+    return (
+      <div className="blur-sm">
+        <Card {...props} />
+      </div>
+    );
+  };
+};
+
+export { Card, isOpenCloseRestaurant };

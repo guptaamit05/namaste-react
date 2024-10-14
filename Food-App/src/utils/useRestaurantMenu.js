@@ -8,12 +8,10 @@ const useRestaurantMenu = (restId, setRestName) => {
   const fetchMenu = async () => {
     const data = await fetch(MENU_API + restId);
     const result = await data.json();
+    
     setRestName(result?.data?.cards[0]?.card.card.text);
     const menuItemsArray =
-      (result?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards).slice(
-        2,
-        -2
-      );
+      (result?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>c.card.card["@type"] == 'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'))
     setMenuItems(menuItemsArray);
   };
 

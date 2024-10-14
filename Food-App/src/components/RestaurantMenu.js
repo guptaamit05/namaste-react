@@ -28,14 +28,14 @@ const RestaurantMenu = () => {
       </div>
   ) : (
       <div className="m-auto w-[80%] p-2 h-auto ">
-        <h1 className="text-center text-4xl">----{restName}---</h1>
+        <h1 className="text-center mt-5 text-4xl">----{restName}---</h1>
 
         {menuItems.map((oneMenuItem, indexx) => {
           let { title, itemCards } = oneMenuItem?.card?.card;
           return (
-            <div key={indexx} className="w-full border-r-4 p-2 mb-5 mt-10 cursor-pointer bg-gray-200 ">
+            <div key={indexx} className="shadow-lg w-full border-r-4 p-2 mb-5 mt-10 bg-gray-100 ">
               <div className="pt-3 pb-3 " onClick={() => handleToggle(indexx)}>
-                <h3 className="text-lg ">
+                <h3 className="text-lg cursor-pointer ">
                   {title}
                   {itemCards ? "(" + itemCards.length + ")" : ""}
                 </h3>

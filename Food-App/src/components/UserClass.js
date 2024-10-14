@@ -17,7 +17,6 @@ class UserClass extends React.Component {
   async componentDidMount() {
     const data = await fetch("https://api.github.com/users/guptaamit05");
     const result = await data.json();
-    console.log(result);
     this.setState({
       userInfo: result,
     });
@@ -47,7 +46,6 @@ class UserClass extends React.Component {
               className="button"
               onClick={() => {
                 this.setState({ count: this.state.count + 1 });
-                console.log(count);
               }}
             >
               Count Increase | Contact
