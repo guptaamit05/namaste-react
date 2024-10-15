@@ -1,9 +1,10 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import reactDom from "react-dom/client";
 import { Footer, Header, Body, Error, RestaurantMenu } from "./index";
 import About from "./components/About";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import UserContext from "./utils/UserContext";
 
 /**
  * header
@@ -22,12 +23,21 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 const Contact = lazy(() => import("./components/Contact"));
 
 const AppLayout = () => {
+  const [uName, setUName] = useState("");
+
+  useEffect(() => {
+    const d = "Rajesh Patidar";
+    setUName(d);
+  }, []);
+
   return (
-    <div className="absolute app h-screen w-full">
-      <Header />
-      <Outlet />
-      <Footer />
-    </div>
+    <UserContext.Provider value={{ loggedUser: uName }}>
+      <div className="absolute app h-screen w-full">
+        <Header />
+        <Outlet />
+        <Footer />
+      </div>
+    </UserContext.Provider>
   );
 };
 
@@ -47,7 +57,7 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: (
-          <Suspense fallback={<h1>Loading.....</h1>}>   
+          <Suspense fallback={<h1>Loading.....</h1>}>
             <Contact />
           </Suspense>
         ),
