@@ -5,6 +5,9 @@ import About from "./components/About";
 
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import UserContext from "./utils/UserContext";
+import {Provider} from "react-redux"   // Providing inside react application that job is done by Provider
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 /**
  * header
@@ -26,18 +29,20 @@ const AppLayout = () => {
   const [uName, setUName] = useState("");
 
   useEffect(() => {
-    const d = "Rajesh Patidar";
+    const d = "Amit Gupta";
     setUName(d);
   }, []);
 
   return (
-    <UserContext.Provider value={{ loggedUser: uName }}>
-      <div className="absolute app h-screen w-full">
-        <Header />
-        <Outlet />
-        <Footer />
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore} >
+      <UserContext.Provider value={{ loggedUser: uName }}>
+        <div className="absolute app h-screen w-full">
+          <Header />
+          <Outlet />
+          <Footer />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
@@ -65,6 +70,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:restId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
     errorElement: <Error />,
