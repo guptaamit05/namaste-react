@@ -1,4 +1,4 @@
-import logo from "../../logo.png";
+// import logo from "../../logo.png";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import { useContext } from "react";
@@ -18,7 +18,7 @@ const Header = () => {
         <Link to="/">
           <img
             className="mix-blend-multiply size-full sm:size-full"
-            src={logo}
+            src=""
             alt="food restaurant img"
           />
         </Link>
