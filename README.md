@@ -63,3 +63,58 @@ Note:
     Babel is a JS Compiler..
 
 We create .parcelrc file to fix the conflict of babel of parcel and testing library babel configuration..
+
+--------------------------------------------------------------------------------
+
+
+# my-youtube App configuration:
+What is the feature you want
+What should be the Tech Stack  (Like: use Tailwind, typeScript/JS, )
+    Means What we have to use for UI layer and Data layer.
+
+Features you want
+Tech Stack:
+    1. Tailwind
+    2. Redux
+    3. Formic Lib
+    4. Routing ( I would be using react-route-dom for routing)
+    5. What bundler are you chosing..
+    6. Testing Library (jest for testing....)
+    7. Can we use google search or not?
+
+Planning: 
+    Header Component:
+        icon at left to open Side Pannel ( including links)
+        Logo 
+        SearchBar
+        UserIcon
+    SideBar Component
+        contains links
+    Body Component
+        Buttons, Filter Component
+        Main Video card Component
+        Open new page on click on video page  (/watch)
+            /watch open new page:
+            having same header Component
+            have video watch Compoennt
+            have some suggestion
+            have comment section.
+            subscribe, like button
+
+Use npm install create-react-app  command to create new application.. (We are executing create-react-app package..)
+
+npm i -D tailwindcss
+npx tailwindcss init
+npm i @reduxjs/toolkit
+npm i react-redux
+npm i react-router-dom
+
+
+Challenge for getting live Chat for my youtube app:
+   Data Layer: get data live
+   UI Layer:   update the UI
+
+    Web Soket: It create a handshake, then you can quickly send data from either side, once the handshake established.. ( there is no interval in web socket )
+    Ex: Treading app, whatsapp,
+    API Polling: the data is unidirectional. UI request the server, (data flow from server to UI) and after an interval ( using setInterval)
+    Ex: crickbuzz, youtube live chat, gmail, 
