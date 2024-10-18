@@ -6,6 +6,8 @@ import store from "./utils/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from "./components/MainContainer";
 import WatchPage from "./components/WatchPage";
+import DemouseMemo from "./components/DemouseMemo";
+import DemouseRef from "./components/DemouseRef";
 
 /**
  * Header
@@ -22,15 +24,24 @@ const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <Body />,
-    children:[
+    children: [
       {
-      path:"/",
-      element:<MainContainer />
+        path: "/",
+        element: <MainContainer />,
       },
       {
-        path:"/watch",
-        element:<WatchPage />
-      }
+        path: "/watch",
+        element: <WatchPage />,
+      },
+      {
+        path: "/demousememo",
+        element: (
+          <>
+            <DemouseMemo />
+            <DemouseRef />
+          </>
+        ),
+      },
     ],
   },
 ]);

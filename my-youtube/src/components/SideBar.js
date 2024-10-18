@@ -12,6 +12,7 @@ const SideBar = () => {
     <div className="p-5 shadow-lg w-48">
       <ul className="py-2">
         <li><Link to="/">Home</Link></li>
+        <li className="bg-gray-300"><Link to="/demousememo" >Demo of useRef/useMemo</Link></li>
         <li>Live</li>
         <li>Shorts</li>
         <li>Videos</li>

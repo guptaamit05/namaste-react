@@ -118,3 +118,15 @@ Challenge for getting live Chat for my youtube app:
     Ex: Treading app, whatsapp,
     API Polling: the data is unidirectional. UI request the server, (data flow from server to UI) and after an interval ( using setInterval)
     Ex: crickbuzz, youtube live chat, gmail, 
+
+
+Use of useMemo...
+    caches the result of calculation between re-renders...
+
+use of useCallback:
+    React Hook that caches the function definition between re-renders
+
+use of useRef Hook:
+    React Hook that lets you reference a value that's not needed for rendering...
+    When You want some value in a component but you don't want component to re-render that value.
+
