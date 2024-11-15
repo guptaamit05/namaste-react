@@ -15,7 +15,7 @@ import InputSection from "./InputSection";
       "https://jsonplaceholder.typicode.com/users/1/todos"
     );
     const result = await data.json();
-    console.log(result);
+    // console.log(result);
     setNotes(result);
   };
 

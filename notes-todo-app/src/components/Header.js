@@ -16,7 +16,7 @@ const Header = () => {
               className={({ isActive }) =>
                 (isActive && "p-2 ml-6 bg-orange-400") || "p-2 ml-6"
               }
-              to={cat}
+              to={"/"+cat}
             >
               {cat}
             </NavLink>
